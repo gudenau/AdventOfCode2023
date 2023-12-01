@@ -1,0 +1,15 @@
+import java.nio.file.Files
+
+rootProject.name = 'AdventOfCode-2023'
+
+try(var stream = Files.list(rootProject.projectDir.toPath().resolve('modules'))) {
+    stream.forEach((path) -> {
+        if(!Files.exists(path.resolve('build.gradle'))) {
+            return
+        }
+
+        var name = path.getFileName().toString()
+        include(name)
+        project(':' + name).projectDir = path.toFile()
+    })
+}

@@ -1,0 +1,9 @@
+allprojects {
+    apply plugin: 'java'
+
+    java {
+        toolchain {
+            version = JavaLanguageVersion.of(21)
+        }
+    }
+}
